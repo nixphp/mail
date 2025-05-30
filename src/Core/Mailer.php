@@ -24,48 +24,56 @@ class Mailer
         $this->transport = $transport;
     }
 
-    public function setTransport(TransportInterface $transport): void
+    public function setTransport(TransportInterface $transport): static
     {
         $this->transport = $transport;
+        return $this;
     }
 
-    public function addTo(string $address): void
+    public function addTo(string $address): static
     {
         $this->recipients[] = $address;
+        return $this;
     }
 
-    public function addCc(string $address): void
+    public function addCc(string $address): static
     {
         $this->carbonCopies[] = $address;
+        return $this;
     }
 
-    public function addBcc(string $address): void
+    public function addBcc(string $address): static
     {
         $this->blindCarbonCopies[] = $address;
+        return $this;
     }
 
-    public function setFrom(string $address): void
+    public function setFrom(string $address): static
     {
         $this->from = $address;
+        return $this;
     }
 
-    public function setReplyTo(string $address): void
+    public function setReplyTo(string $address): static
     {
         $this->replyTo = $address;
+        return $this;
     }
 
-    public function setSubject(string $subject): void
+    public function setSubject(string $subject): static
     {
         $this->subject = $subject;
+        return $this;
     }
 
-    public function setContent(string $content, bool $isHtml = true): void
+    public function setContent(string $content, bool $isHtml = true): static
     {
         $this->content = $content;
         $this->isHtml = $isHtml;
+        return $this;
     }
 
-    public function addAttachment(string $name, string $path, bool $inline = false): void
+    public function addAttachment(string $name, string $path, bool $inline = false): static
     {
         if (!is_file($path)) {
             throw new MailException("Attachment file not found: $path");
@@ -78,6 +86,8 @@ class Mailer
             'mimetype' => mime_content_type($path),
             'inline'   => $inline,
         ];
+
+        return $this;
     }
 
     public function send(): bool
