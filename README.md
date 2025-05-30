@@ -10,7 +10,7 @@
 
 ---
 
-# nixphp/mailer
+# nixphp/mail
 
 > **A lightweight, extensible mailer system for NixPHP – with full transport abstraction and attachment support.**
 
@@ -33,7 +33,7 @@ This plugin provides a clean interface for sending emails in your NixPHP applica
 ## 📥 Installation
 
 ```bash
-composer require nixphp/mailer
+composer require nixphp/mail
 ```
 
 ---
@@ -89,30 +89,6 @@ Your transport must implement:
 
 ```php
 NixPHP\Mail\Core\TransportInterface
-```
-
----
-
-## 📁 File structure
-
-A basic mailer setup might look like this:
-
-```text
-app/
-└── Mail/
-    └── MyCustomTransport.php
-
-app/bootstrap.php
-```
-
-And in your `bootstrap.php`, bind the helper:
-
-```php
-app()->container()->set(NixPHP\Mail\Mailer::class, fn () => new Mailer(new MailTransport()));
-
-function mailer(): NixPHP\Mail\Mailer {
-    return app()->container()->get(NixPHP\Mail\Mailer::class);
-}
 ```
 
 ---
