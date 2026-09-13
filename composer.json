@@ -1,5 +1,6 @@
 {
   "name": "nixphp/mail",
+  "abandoned": "naf/mail",
   "description": "NixPHP Mail Plugin for quick email communication.",
   "minimum-stability": "stable",
   "license": "MIT",
